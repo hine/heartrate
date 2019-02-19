@@ -91,7 +91,7 @@ HeartRateBLE.prototype = {
       position++;
     } else {
       // 心拍情報が16bitで送られてくる場合
-      heartrate_value = event.target.value.getUint16(position);
+      heartrate_value = event.target.value.getUint16(position,  true);
       position+=2;
     }
     console.log("心拍数:" + heartrate_value);
@@ -111,17 +111,16 @@ HeartRateBLE.prototype = {
 
     // 消費エネルギー情報の取得
     if (((flags >> 3) & 0b0000001) == 1) {
-      energy_expended_value = event.target.value.getUint16(position);
+      energy_expended_value = event.target.value.getUint16(position, ture);
       position+=2;
       console.log("消費熱量:" + energy_expended_value);
     }
 
     // RRインターバル（脈間隔）情報の取得
-    // 消費エネルギー情報の取得
     if (((flags >> 4) & 0b0000001) == 1) {
       for (var i=0; i < (event.target.value.byteLength - position) / 2; i++) {
-        rr_interval_value.push = event.target.value.getUint16(position + i * 2);
-        console.log("脈間隔:" + event.target.value.getUint16(position + i * 2));
+        rr_interval_value.push = event.target.value.getUint16(position + i * 2, true) / 1024.0;
+        console.log("脈間隔:" + (event.target.value.getUint16(position + i * 2, true) / 1024.0));
       }
     }
 
@@ -176,10 +175,10 @@ window.onload = function () {
     options: {
       scales: {
         yAxes: [{
-          id: "heartbeat",   // Y軸のID
-          type: "linear",   // linear固定 
-          position: "left", // どちら側に表示される軸か？
-          ticks: {          // スケール
+          id: "heartbeat",
+          type: "linear",
+          position: "left",
+          ticks: {
               max: 150,
               min: 0,
               stepSize: 30,
