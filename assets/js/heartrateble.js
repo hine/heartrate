@@ -9,7 +9,7 @@ var HeartRateBLE = function() {
 HeartRateBLE.prototype = {
   // Class定数定義
 
-  // heart rate モニターのUUID群
+  // heart rate モニターのUUID群(UUIDは小文字で書かないと怒られる)
   HEART_RATE_SERVICE_UUID: '0000180d-0000-1000-8000-00805f9b34fb',
   HEART_RATE_MEASUREMENT_CHARACTERISTIC_UUID: '00002a37-0000-1000-8000-00805f9b34fb',
 
@@ -151,6 +151,7 @@ window.onload = function () {
   document.getElementById("connect-button").addEventListener("click", heartRateBLE.connect.bind(heartRateBLE), false);
   document.getElementById("disconnect-button").addEventListener("click", heartRateBLE.disconnect.bind(heartRateBLE), false);
 
+  // 以下、グラフのリアルタイム描画に関する記述
   var ctx = document.getElementById('chart').getContext('2d');
   var chart = new Chart(ctx, {
     type: 'line',
@@ -163,8 +164,8 @@ window.onload = function () {
         data: []
       }, {
         label: 'Battery(%)',
-        backgroundColor: 'rgba(54, 162, 235, 0.5)',
-        borderColor: 'rgb(54, 162, 235)',
+        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+        borderColor: 'rgba(54, 162, 235, 0.5)',
         fill: false,
         lineTension: 0,
         borderDash: [8, 4],  
@@ -179,9 +180,9 @@ window.onload = function () {
           type: "linear",   // linear固定 
           position: "left", // どちら側に表示される軸か？
           ticks: {          // スケール
-              max: 250,
+              max: 150,
               min: 0,
-              stepSize: 50,
+              stepSize: 30,
           },
         }, {
           id: "battery",
