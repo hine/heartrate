@@ -17,7 +17,7 @@
     ```
     git clone https://github.com/hine/heartrate.git
     ```
-    もしくは[]ダウンロードリンク](https://github.com/hine/heartrate/archive/master.zip)でZIPファイルをダウンロードして展開する。
+    もしくは[ダウンロードリンク](https://github.com/hine/heartrate/archive/master.zip)でZIPファイルをダウンロードして展開する。
 
 1. index.htmlをchromeで開く
 1. ハートレートモニタを装着する
@@ -28,3 +28,11 @@
 ## で、これどうすればいいの？！
 
 assets/js/heartrateble.jsがmicro:bitと接続するサンプルコードになっています。これを参考に是非色々なWebアプリケーションを作ってください！
+
+## 利用しているライブラリ等
+
+いずれもMIT Lisenceです。
+
+- Moment.js [https://momentjs.com/](https://momentjs.com/)
+- Chart.js [https://github.com/chartjs/Chart.js](https://github.com/chartjs/Chart.js)
+- chartjs-plugin-streaming [https://nagix.github.io/chartjs-plugin-streaming/](https://nagix.github.io/chartjs-plugin-streaming/)
