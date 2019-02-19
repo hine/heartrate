@@ -1,0 +1,40 @@
+@charset "UTF-8";
+button {
+  outline: 0;
+  margin: 5px;
+  width: 200px;
+  font-size: 24px;
+  text-align: center;
+  padding:8px 0 10px;
+  color: #ffffff;
+  background-color: #49a9d4;
+  border: none;
+  border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+}
+#data {
+  display: flex;
+  flex-direction: column;
+  font-size: 24px;
+}
+.datam {
+  display: inline-flex;
+}
+.label {
+  width: 180px;
+}
+input[type="text"] {
+  margin: 5px;
+  width: 180px;
+  font-size: 24px;
+  text-align: center;
+  border: solid 1px #cccccc;
+  border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+}
+#chart {
+  width: 200px;
+  height: 200px;
+}
